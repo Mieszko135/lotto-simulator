@@ -1,0 +1,61 @@
+* {
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 1rem;
+    background-color: lightgreen;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+table {
+    background-color: white;
+}
+
+td {
+    padding: 1rem;
+    font-size: 1.5rem;
+    border: 1px solid rgb(255, 113, 158);
+}
+
+td:hover {
+    background-color: rgb(255, 209, 217);
+}
+
+.balls-container {
+    display: flex;
+    gap: 2rem;
+}
+
+.ball {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 80);
+    font-size: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-lottery {
+    padding: 1rem 3rem;
+    font-size: 2rem;
+    border: 1px solid orangered;
+    background-color: orange;
+    color: yellow;
+}
+
+.start-lottery:hover {
+    cursor: pointer;
+}
+
+.start-lottery:active {
+    box-shadow: inset 0 0 32px 0px lightcoral;
+}
