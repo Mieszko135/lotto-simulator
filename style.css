@@ -12,6 +12,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 5rem;
+    position: relative;
 }
 
 table {
@@ -26,6 +27,7 @@ td {
 
 td:hover {
     background-color: #ffd1d9;
+    cursor: pointer;
 }
 
 .balls-container {
@@ -64,4 +66,35 @@ td:hover {
 
 .btn:active {
     box-shadow: inset 0 0 32px 0px lightcoral;
+}
+
+.block-under{
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.win-info {
+    width: 50%;
+    height: 50%;
+    background-color: gold;
+    border: 10px dotted goldenrod;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.win-info__text {
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+.none {
+    display: none;
 }

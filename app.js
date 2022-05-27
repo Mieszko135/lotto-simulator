@@ -9,6 +9,9 @@ const couponNumbers = document.querySelectorAll("td");
 const lottoBalls = document.querySelectorAll(".ball");
 const startBtn = document.querySelector(".start-lottery");
 const checkBtn = document.querySelector(".check-numbers")
+const winMsg = document.querySelector(".win-info__text")
+const continueBtn = document.querySelector(".win-info__btn");
+const blockWindow = document.querySelector(".block-under")
 
 howManyNumb = 0;
 
@@ -32,7 +35,6 @@ couponNumbers.forEach((number) => {
                     alert("Skreślono maksymalną ilość liczb")
                 }
             } 
-            return console.log(choosenNumbers)
         })
     }
 })
@@ -57,7 +59,7 @@ startBtn.addEventListener("click", () => {
             if (counter === 6) {
                 clearInterval(lottoInterval);
             }
-        }, 100);
+        }, 2000);
     }
 })
 
@@ -74,16 +76,21 @@ checkBtn.addEventListener("click", () => {
             howManyNumb += 0
         }
     }
-    if (howManyNumb <= 2) {
-        alert(`Niestety, tym razem nic nie wygrałeś. Ilość trafionych liczb to: ${howManyNumb}`)
-    } else if (howManyNumb == 3) {
-        alert("Trafiłeś 3 liczby, wygrywasz 24zł.")
-    } else if (howManyNumb == 4) {
-        alert("Trafiłeś 4 liczby, wygrywasz 250zł")
-    } else if (howManyNumb == 5) {
-        alert("Trafiłeś 5 liczb, wygrywasz 5000zł")
+    if (lottoBalls[5].textContent !== "") {
+        blockWindow.classList.remove("none")
     } else {
-        alert("Gratulacje, trafiłeś 6 liczb, wygrywasz 10000000zł!!!")
+        alert("Losowanie się nie odbyło")
+    }
+    if (howManyNumb <= 2) {
+        winMsg.textContent =`Ilość trafionych liczb: ${howManyNumb}. Niestety, tym razem nic nie wygrywasz.`;
+    } else if (howManyNumb == 3) {
+        winMsg.textContent ="Iloś trafionych liczb: 3. Wygrywasz 24zł.";
+    } else if (howManyNumb == 4) {
+        winMsg.textContent = "Iloś trafionych liczb: 4. Wygrywasz 250zł";
+    } else if (howManyNumb == 5) {
+        winMsg.textContent = "Iloś trafionych liczb: 5. Wygrywasz 5000zł";
+    } else {
+        winMsg.textContent = "Gratulacje, Iloś trafionych liczb: 6. Wygrywasz 10000000zł!!!";
     }
 
     howManyNumb = 0;
@@ -91,6 +98,17 @@ checkBtn.addEventListener("click", () => {
     // couponNumbers.forEach((number) => {
     //     number.style.backgroundColor = "white";
     // });
+})
+
+continueBtn.addEventListener("click", () => {
+    choosenNumbers.splice(0,6);
+    couponNumbers.forEach((number) => {
+        number.style.backgroundColor = "white";
+    });
+    lottoBalls.forEach((ball, index) => {
+        ball.textContent = "";
+    });
+    blockWindow.classList.add("none");
 })
 
 // setTimeout(() => {
