@@ -1,3 +1,5 @@
+//Potestować czy działa, zablokowac mozliwosc wielokrtonego nacisniecia start w trakcie jednego losowania
+
 const randomNumber = () => {
     return Math.floor(Math.random()*49+1)
 }
@@ -73,7 +75,7 @@ checkBtn.addEventListener("click", () => {
         if (choosenNumbers.includes(winnerryNum[i]) == true) {
             howManyNumb++;
         } else {
-            howManyNumb += 0
+            howManyNumb += 0;
         }
     }
     if (lottoBalls[5].textContent !== "") {
@@ -93,7 +95,8 @@ checkBtn.addEventListener("click", () => {
         winMsg.textContent = "Gratulacje, Iloś trafionych liczb: 6. Wygrywasz 10000000zł!!!";
     }
 
-    howManyNumb = 0;
+    // howManyNumb = 0;
+
     // choosenNumbers.splice(0,6);
     // couponNumbers.forEach((number) => {
     //     number.style.backgroundColor = "white";
@@ -101,11 +104,13 @@ checkBtn.addEventListener("click", () => {
 })
 
 continueBtn.addEventListener("click", () => {
+    howManyNumb = 0;
+    winnerryNum.splice(0,6);
     choosenNumbers.splice(0,6);
     couponNumbers.forEach((number) => {
         number.style.backgroundColor = "white";
     });
-    lottoBalls.forEach((ball, index) => {
+    lottoBalls.forEach((ball) => {
         ball.textContent = "";
     });
     blockWindow.classList.add("none");
