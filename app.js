@@ -1,5 +1,3 @@
-//Potestować czy działa, zablokowac mozliwosc wielokrtonego nacisniecia start w trakcie jednego losowania
-
 const randomNumber = () => {
     return Math.floor(Math.random()*49+1)
 }
@@ -45,6 +43,7 @@ startBtn.addEventListener("click", () => {
     if (choosenNumbers.length !== 6) {
         alert("Nie wypełniono kuponu! Przed rozpoczęciem losowania wypełnij kupon.")
     } else {
+        startBtn.disabled = true;
         let counter = 0;
         const drawnNumbers = [];
         const lottoInterval = setInterval(() => {
@@ -60,6 +59,7 @@ startBtn.addEventListener("click", () => {
             counter++;
             if (counter === 6) {
                 clearInterval(lottoInterval);
+                startBtn.disabled = false;
             }
         }, 2000);
     }
@@ -94,13 +94,6 @@ checkBtn.addEventListener("click", () => {
     } else {
         winMsg.textContent = "Gratulacje, Iloś trafionych liczb: 6. Wygrywasz 10000000zł!!!";
     }
-
-    // howManyNumb = 0;
-
-    // choosenNumbers.splice(0,6);
-    // couponNumbers.forEach((number) => {
-    //     number.style.backgroundColor = "white";
-    // });
 })
 
 continueBtn.addEventListener("click", () => {
@@ -115,49 +108,3 @@ continueBtn.addEventListener("click", () => {
     });
     blockWindow.classList.add("none");
 })
-
-// setTimeout(() => {
-//     for (let i = 0; i < 6; i++) {
-//         winnerryNum.push(parseInt(lottoBalls[i].textContent));
-//         if (choosenNumbers.includes(winnerryNum[i]) == true) {
-//             howManyNumb++
-//         }
-//     }
-//     console.log(howManyNumb);
-// }, 5000);
-
-// for (let i = 0; i < 6; i++) {
-//     let lotteryNumber = randomNumber();
-//     if (!drawnNumbers.includes(lotteryNumber)) {
-//         drawnNumbers.push(lotteryNumber)
-//     } else {
-//         i -= 1;
-//     }
-// }
-
-// lottoBalls.forEach((ball, index) => {
-    //     ball.textContent = drawnNumbers[index];
-    // })
-    
-    // setTimeout(() => {
-//     clearInterval(lottoInterval)
-// }, 18000);
-
-
-// couponNumbers.forEach((number) => {
-//     const markedNumber = parseInt(number.textContent);
-//     if (number.textContent !== "") {
-//         number.addEventListener("click", () => {
-//             if (choosenNumbers.length < 6) {
-//                 number.style.backgroundColor = "#ffd1d9";
-//                 if (!choosenNumbers.includes(markedNumber)) {
-//                     choosenNumbers.push(markedNumber)
-//                 } else {
-//                     choosenNumbers.splice(choosenNumbers.indexOf(markedNumber), 1);
-//                     number.style.backgroundColor = "white";
-//                 }
-//             } else {alert("Skreślono maksymalną ilość liczb")}
-//             return console.log(choosenNumbers)
-//         })
-//     }
-// })
